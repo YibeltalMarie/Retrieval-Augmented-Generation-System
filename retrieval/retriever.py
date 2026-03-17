@@ -1,3 +1,4 @@
+import os
 from chromadb import Client
 from chromadb.config import Settings
 from langchain_community.embeddings import HuggingFaceEmbeddings
@@ -13,7 +14,10 @@ class Retriever:
         :param collection_name: Name of the collection
         :param top_k: Number of top chunks to return
         """
-        self.client = Client(Settings(persist_directory=persist_directory))
+        self.client = Client(Settings(
+            persist_directory=persist_directory,
+            is_persistent=True
+            ))
         self.collection = self.client.get_collection(collection_name)
         self.top_k = top_k
 
