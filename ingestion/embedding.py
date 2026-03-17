@@ -1,37 +1,18 @@
-from langchain_community.document_loaders import DirectoryLoader, TextLoader, PyPDFLoader
 
+from langchain_community.embeddings import HuggingFaceEmbeddings
 
-def load_documents(doc_path="../documents"):
+def embed_documents(chunks):
     """
-    Load all supported documents from the directory.
-    Supports TXT and PDF files.
+    Generate embeddings for each chunk using HuggingFace Sentence Transformers.
     """
 
-    txt_loader = DirectoryLoader(
-        doc_path,
-        glob="**/*.txt",
-        loader_cls=TextLoader,
-        loader_kwargs={"encoding": 'utf-8'}
+    # Initialize embedding model
+    embedder = HuggingFaceEmbeddings(
+        model_name="sentence-transformers/all-MiniLM-L6-v2"
     )
 
-    pdf_loader = DirectoryLoader(
-        doc_path,
-        glob="**/*.pdf",
-        loader_cls=PyPDFLoader
-    )
+    # Create embeddings for each chunk
+    for doc in chunks:
+        doc.metadata["embedding"] = embedder.embed_query(doc.page_content)
 
-    txt_documents = txt_loader.load()
-    pdf_documents = pdf_loader.load()
-
-    documents = txt_documents + pdf_documents
-
-    # for i, doc in enumerate(documents[:2]):
-    #     print(f"\nDocument {i+1}: ")
-    #     print(f"Source: {doc.metadata['source']}")
-    #     print(f"Content Length: {len(doc.page_content)} characters")
-    #     print(f"Content Preview: {doc.page_content[:100]}")
-    #     print(f"Metadata: {doc.metadata}")
-
-    return documents
-
-# load_documents()
+    return chunks
