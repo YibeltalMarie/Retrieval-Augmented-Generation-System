@@ -18,11 +18,11 @@ def chunk_documents(documents):
 
     # Characteristics:
 
-    #     Feature	Value
-    #     Dimension	384
-    #     Speed	Fast
-    #     Size	Small
-    #     Use	Sentence similarity
+    #     Feature  Value
+    #     Dimension  384
+    #     Speed  Fast
+    #     Size  Small
+    #     Use  Sentence similarity
 
     # Create semantic chunker
     chunker = SemanticChunker(embeddings)
@@ -63,11 +63,11 @@ def chunk_documents(documents):
         #     The exact number may vary depending on the implementation and version.
         #     It also has a percentile-based option, where it chooses boundaries dynamically based on the distribution of similarities in the document.
         # Parameter Explanation
-        #     Parameter	Purpose
-        #     breakpoint_threshold :	Value between 0 and 1. Cosine similarity below this triggers a new chunk.
-        #     breakpoint_threshold_type: 	"absolute" → use exact number (e.g., 0.75), "percentile" → choose threshold from data distribution.
-        #     chunk_size (optional): 	Maximum number of sentences per chunk (used to avoid huge chunks)
-        #     chunk_overlap (optional): 	Number of sentences that overlap between consecutive chunks
+        #     Parameter  Purpose
+        #     breakpoint_threshold :  Value between 0 and 1. Cosine similarity below this triggers a new chunk.
+        #     breakpoint_threshold_type:   "absolute" → use exact number (e.g., 0.75), "percentile" → choose threshold from data distribution.
+        #     chunk_size (optional):   Maximum number of sentences per chunk (used to avoid huge chunks)
+        #     chunk_overlap (optional):   Number of sentences that overlap between consecutive chunks
     # Step 6 — Create New Document Objects
     # Each chunk becomes a new Document.
 
