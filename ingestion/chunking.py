@@ -1,7 +1,6 @@
 
 from langchain_experimental.text_splitter import SemanticChunker
 from langchain_community.embeddings import HuggingFaceEmbeddings
-from loader import load_documents
 
 
 def chunk_documents(documents):
@@ -10,10 +9,13 @@ def chunk_documents(documents):
     Splits text based on semantic similarity instead of characters.
     """
 
+    print("Starting Loading Embedding model.... in chunking.py")
     # Embedding model used for detecting semantic boundaries
     embeddings = HuggingFaceEmbeddings(
         model_name="sentence-transformers/all-MiniLM-L6-v2"
     )
+
+    print("Finished Loading Embedding model.... in chunking.py")
     # This loads the MiniLM embedding model.
 
     # Characteristics:
@@ -30,8 +32,11 @@ def chunk_documents(documents):
     # It will use it to determine:
     # Are two sentences related?
 
+    print("Start splitting text into sentences.... in chunking.py")
     # Split documents
     chunks = chunker.split_documents(documents)
+
+    print("Finish chunking.............")
     # Step 1 — Extract Text
     # The chunker extracts text from each document.
 
@@ -74,14 +79,14 @@ def chunk_documents(documents):
     # Step 7 — Return Chunk List
     # Finally the function returns:
 
-    for i, chunk in enumerate(chunks[:2]):
-        print(f"\nChunk {i+1}: ")
-        print(f"Source: {chunk.metadata['source']}")
-        print(f"Content Length: {len(chunk.page_content)} characters")
-        print(f"Content Preview: {chunk.page_content}")
-        print(f"Metadata: {chunk.metadata}")
+    # for i, chunk in enumerate(chunks[:2]):
+    #     print(f"\nChunk {i+1}: ")
+    #     print(f"Source: {chunk.metadata['source']}")
+    #     print(f"Content Length: {len(chunk.page_content)} characters")
+    #     print(f"Content Preview: {chunk.page_content}")
+    #     print(f"Metadata: {chunk.metadata}")
 
     return chunks
 
-documents = load_documents()
-chunk_documents(documents)
+# documents = load_documents()
+# chunk_documents(documents)
