@@ -32,6 +32,7 @@
 
 
 from retrieval.query_rewriter import rewrite_query
+from retrieval.retriever import Retriever
 from llm.ollama_client import generate_response
 
 class RAGPipeline:
