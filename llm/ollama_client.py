@@ -1,7 +1,7 @@
 
 import ollama
 
-def generate_response(prompt, model="llama3"):
+def generate_response(prompt, model="phi"):
     """
     Send prompt to Ollama and get response.
     """
