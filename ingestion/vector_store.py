@@ -36,4 +36,4 @@ def store_embeddings(chunks, persist_directory=DOCS_PATH):
     print("Finished adding embedded chunks.")
     print("##### Now All embeddings are stored persistently in chroma db ########")
 
-    return collection
+    # return collection
