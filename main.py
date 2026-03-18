@@ -9,12 +9,22 @@
 # embeddings = embed_documents(chunks)
 # stored_embeddings = store_embeddings(embeddings)
 
-from retrieval.retriever import Retriever
+# from retrieval.retriever import Retriever
 
-query = "What are the two main components of the Transformer architecture?"
-retriever = Retriever()
-retrieved_chunks = retriever.retrieve(query)
+# query = "What are the two main components of the Transformer architecture?"
+# retriever = Retriever()
+# retrieved_chunks = retriever.retrieve(query)
 
-print(retrieved_chunks)
+# print(retrieved_chunks)
 
+from retrieval.rag_pipeline import RAGPipeline
+
+rag = RAGPipeline()
+
+response = rag.run("What is attention in transformers?")
+
+print(response["answer"])
+
+for src in response["sources"]:
+    print(src["metadata"]["source"])
 
