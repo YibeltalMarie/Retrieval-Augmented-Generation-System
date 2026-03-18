@@ -17,14 +17,19 @@
 
 # print(retrieved_chunks)
 
-from retrieval.rag_pipeline import RAGPipeline
+# from retrieval.rag_pipeline import RAGPipeline
 
-rag = RAGPipeline()
+# rag = RAGPipeline()
 
-response = rag.run("What is attention in transformers?")
+# response = rag.run("What is attention in transformers?")
 
-print(response["answer"])
+# print(response["answer"])
 
-for src in response["sources"]:
-    print(src["metadata"]["source"])
+# for src in response["sources"]:
+#     print(src["metadata"]["source"])
 
+
+from chat.chat_loop import start_chat
+
+if __name__ == "__main__":
+    start_chat()

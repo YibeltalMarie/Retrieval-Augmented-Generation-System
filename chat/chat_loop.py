@@ -38,14 +38,7 @@ def start_chat():
             print(f"🔁 Rewritten Query: {rewritten_query}\n")
 
         # Print answer[main ca203d0] build history manager to track chat history
- 1 file changed, 33 insertions(+)
 
-RAG-System main ❯ git push
-Enumerating objects: 7, done.
-Counting objects: 100% (7/7), done.
-Delta compression using up to 4 threads
-Compressing objects: 100% (4/4), done.
-Writing objects: 100% (4/4), 697 bytes | 348.00 KiB/s, done.
         print(f"\nAssistant: {answer}\n")
 
 
