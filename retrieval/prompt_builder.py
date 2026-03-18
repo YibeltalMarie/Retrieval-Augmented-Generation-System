@@ -12,11 +12,11 @@ def build_prompt(query, retrieved_chunks, chat_history=None):
     for i, chunk in enumerate(retrieved_chunks):
         context_text += f"[{i+1}] {chunk['document']}\n"
 
-    # # 2. Format chat history (if exists)
-    # history_text = ""
-    # if chat_history:
-    #     for turn in chat_history:
-    #         history_text += f"User: {turn['user']}\nAssistant: {turn['assistant']}\n"
+    # 2. Format chat history (if exists)
+    history_text = ""
+    if chat_history:
+        for turn in chat_history:
+            history_text += f"User: {turn['user']}\nAssistant: {turn['assistant']}\n"
 
     # 3. Build final prompt
     prompt = f"""
@@ -32,13 +32,13 @@ Context:
 
 """
 
-#     # Add history if available
-#     if history_text:
-#         prompt += f"""
-# Conversation History:
-# {history_text}
-# ---------------------
-# """
+    # Add history if available
+    if history_text:
+        prompt += f"""
+Conversation History:
+{history_text}
+---------------------
+"""
 
     prompt += f"""
 Question:
