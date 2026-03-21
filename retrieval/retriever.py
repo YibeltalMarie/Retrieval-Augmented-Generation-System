@@ -7,7 +7,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DOCS_PATH = os.path.join(BASE_DIR, "data/vector_db")
 
 class Retriever:
-    def __init__(self, persist_directory=DOCS_PATH, collection_name="rag_documents", top_k=3):
+    def __init__(self, persist_directory=DOCS_PATH, collection_name="rag_documents", top_k=1):
         """
         Initialize retriever.
         :param persist_directory: Path to Chroma DB

@@ -39,7 +39,7 @@ def start_chat():
 
         # Print answer[main ca203d0] build history manager to track chat history
 
-        print(f"\nAssistant: {answer}\n")
+        # print(f"\nAssistant: {answer}\n")
 
 
         # Show sources
